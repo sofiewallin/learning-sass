@@ -4,16 +4,134 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test webpack</title>
+    <title>Sass by Sofie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Karla:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Hej jag heter Sofie!</h1>
-    <a href="example.html">Test exempel</a>
-    <p>Jag testar att få webpack up and running.</p>
-    <p>Testy.</p>
-    <p>Hur får jag ändringar i index.html i livereload, meh</p>
-    <p>Can't get html on live reload, eller? Can I? Yes I CAN!!!!</p>
-    <img src="./images/content/blomsterang_thumb.jpg" alt="Test">
-    <img src="./images/layout/facebook_ikon.svg" alt="Test">
+    <header id="main-header">
+        <h2 class="logo">
+            <a href="./">Sass by Sofie</a>
+        </h2>
+        <nav id="main-navigation" aria-label="Kursmoment">
+            <ol class="menu">
+                <li><a href="#assignment">The Assignment</a></li>
+                <li><a href="#webpack">Using webpack</a></li>
+                <li><a href="#sass">Setting up Sass</a></li>
+                <li><a href="#progress">Course Progress</a></li>
+                <li><a href="#github">My GitHub</a></li>
+            </ol>
+        </nav>
+    </header>
+    <main id="main-content">
+        <h1>Learning CSS preprocessors and Sass</h1>
+        <p>This page is part of a school assignment where I'm learning Sass, but also practising a little bit of CSS animation, JavaScript and Webpack.</p>
+        <section id="assignment">
+            <figure>
+                <picture>
+                    <!-- max-width: 375px -->
+                    <source type="image/jpeg" srcset="./images/content/assignment_galaxy_325.jpg 1x, 
+                    ./images/content/assignment_galaxy_648.jpg" media="(max-width: 375px)">
+                    <!-- max-width: 768px -->
+                    <source type="image/jpeg" srcset="./images/content/assignment_galaxy_648.jpg 1x, 
+                    ./images/content/assignment_galaxy_1296.jpg 2x" media="(max-width: 768px)">
+                    <!-- min-width: 920px -->
+                    <source type="image/jpeg" srcset="./images/content/assignment_galaxy_900.jpg 1x, 
+                    ./images/content/assignment_galaxy_1800.jpg 2x" media="(min-width: 920px)">
+                    <!-- default image -->
+                <img src="./images/content/assignment_galaxy_900.jpg" alt="Some kind of first galaxy">
+            </figure>
+            <h2>The Assigment</h2>
+            <p>The instructions for the assignment was to:</p>
+            <ul>
+                <li>Create a simple web template for a fictional website with optional content, design and structure. The site only needs to consist of one HTML file but it's ok to add more. <span class="check">✓</span></li>
+                <li>Let the website have at least headings and text, a main menu with five links, a color scheme with a minimum of three colors, two images and be responsive. <span class="check">✓</span></li>
+                <li>Generate the website's CSS code from Sass. The development environment of the website should contain all the functionality of the previous assignment and functionality for compiling Sass files into CSS. <span class="check">✓</span></li>
+                <li>Let the Sass code at a minimum contain variables, nesting, mixins, selector inheritance, if/else, color functions (darken, lighten at least). <span class="check">✓</span></li>
+                <li>Publish the website to a publicly available web host and to GitHub. <span class="check">✓</span></li>
+            </ul>
+        </section>
+        <section id="webpack">
+            <h2>Using Webpack</h2>
+            <p>Instead of using Gulp as I did in the previous assignment, I decided to use <a href="https://webpack.js.org/" target="_blank" rel="noreferrer noopener">webpack</a>. Gulp gave me a lot of warnings and errors and didn't seem to be as continuously updated anymore, webpack seems to be what most developers are using today.</p>
+            <p>I followed a tutorial and the documentation on their website and think I got the hang of it. This is the setup I built:</p>
+            <ul>
+                <li>A project folder with Git, npm, webpack and webpack CLI.</li>
+                <li>A remote repository at GitHub.</li>
+                <li>A <code>README.md</code> describing this assigment, how I set up webpack and how to use my repository.</li>
+                <li>A <code>.gitignore</code> that ignores <code>node_modules</code>, <code>dist</code> and <code>.DS_store</code> (because I'm working on a Macbook).</li>
+                <li>Automatically created <code>node_modules/</code>, <code>package.json</code> and <code>package-lock.json</code>.</li>
+                <li>A source folder (<code>src/</code>) with all the code for the website and an <code>index.js</code> file as the webpack entry point.</li>
+                <li>Three config files, one for common configurations <code>webpack.common.js</code>, one for development configurations <code>webpack.dev.js</code> and one for production configurations <code>webpack.prod.js</code>.</li>
+                <li>The website is configured to use <code>dist/</code> as the websites production folder where all the compiled and ready files go.</li>
+            </ul>
+            <p>I use separate configurations for development mode and production mode. In production all the files are compiled, minimized and ready to be published compared to the development files.</p>
+            <h3>Loaders and plugins</h3>
+            <p>These are the loaders and plugins I've used:</p>
+            <ul>
+                <li><a href="https://webpack.js.org/loaders/css-loader/" target="_blank" rel="noreferrer noopener"><code>css-loader</code></a> for translating CSS into CommonJS.</li>
+                <li><a href="https://webpack.js.org/loaders/style-loader/" target="_blank" rel="noreferrer noopener"><code>style-loader</code></a> for creating style nodes from JS strings.</li>
+                <li><a href="https://webpack.js.org/loaders/sass-loader/" target="_blank" rel="noreferrer noopener"><code>sass-loader</code></a> for compiling Sass into CSS. This loader depends on <a href="https://github.com/sass/dart-sass"><code>Dart Sass</code></a> so that was used as well.</li>
+                <li><a href="https://www.npmjs.com/package/webpack-merge" target="_blank" rel="noreferrer noopener"><code>webpack-merge</code></a> for merging <code>module.exports</code> in seperate config files.</li>
+                <li><a href="https://webpack.js.org/plugins/html-webpack-plugin/" target="_blank" rel="noreferrer noopener"><code>HtmlWebpackPlugin</code></a> and <a href="https://webpack.js.org/loaders/html-loader/"><code>html-loader</code></a> for moving, minimizing and handling html files.</li>
+                <li><a href="https://webpack.js.org/plugins/mini-css-extract-plugin/" target="_blank" rel="noreferrer noopener"><code>MiniCssExtractPlugin</code></a> for extracting CSS into seperate file in production.</li>
+                <li><a href="https://www.npmjs.com/package/css-minimizer-webpack-plugin" target="_blank" rel="noreferrer noopener"><code>CssMinimizerPlugin</code></a> for minimizing CSS.</li>
+                <li><a href="https://www.npmjs.com/package/webpack-dev-server" target="_blank" rel="noreferrer noopener"><code>DevServer</code></a> for setting up a development environment and for source mapping.</li>
+            </ul>
+        </section>
+        <section id="sass">
+            <figure>
+                <picture>
+                    <!-- max-width: 919px -->
+                    <source type="image/jpeg" srcset="./images/content/sass_galaxy_325.jpg 1x, 
+                    ./images/content/sass_galaxy_650.jpg" media="(max-width: 919px)">
+                    <!-- min-width: 920px -->
+                    <source type="image/jpeg" srcset="./images/content/sass_galaxy_440.jpg 1x, 
+                    ./images/content/sass_galaxy_880.jpg 2x" media="(min-width: 920px)">
+                    <!-- default image -->
+                <img src="./images/content/sass_galaxy_650.jpg" alt="Some kind of first galaxy">
+            </figure>
+            <figure>
+                <picture>
+                    <!-- max-width: 919px -->
+                    <source type="image/jpeg" srcset="./images/content/sass_galaxy2_325.jpg 1x, 
+                    ./images/content/sass_galaxy2_650.jpg" media="(max-width: 919px)">
+                    <!-- min-width: 920px -->
+                    <source type="image/jpeg" srcset="./images/content/sass_galaxy2_440.jpg 1x, 
+                    ./images/content/sass_galaxy2_880.jpg 2x" media="(min-width: 920px)">
+                    <!-- default image -->
+                <img src="./images/content/sass_galaxy2_650.jpg" alt="Some kind of first galaxy">
+            </figure>
+            <h2>Setting up Sass</h2>
+            <p>I created a simple setup and structure for my Sass files in <code>src/sass/</code> based on the information in the article <a href="https://medium.com/@dannyhuang_75970/sass-project-structure-for-big-projects-8c4a740846ee" target="_blank" rel="noreferrer noopener">SASS Project Structure for Big Projects</a> by Danny Huang.</p>
+            <p>I use a <code>main.scss</code> where I import all the partials and set the charset. The partials I use are:</p>
+            <ul>
+                <li><code>_base.scss</code> for resets, variables, mixins and some utility CSS classes.</li>
+                <li><code>_component.scss</code> for any reusable components.</li>
+                <li><code>_layout.scss</code> for handling the overall layout of the page.</li>
+            </ul>
+        </section>
+        <section id="progress">
+            <h2>Course Progress</h2>
+            <p>These are the tools and languages that I've learned and started using in this course so far:</p>
+            <ul>
+                <li><a href="https://git-scm.com/" target="_blank" rel="noreferrer noopener">Git</a></li>
+                <li><a href="https://github.com/" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+                <li><a href="https://nodejs.org/en/" target="_blank" rel="noreferrer noopener">Node.js</a></li>
+                <li><a href="" target="_blank" rel="noreferrer noopener">npm</a></li>
+                <li><a href="" target="_blank" rel="noreferrer noopener">Gulp</a></li>
+                <li><a href="" target="_blank" rel="noreferrer noopener">webpack</a></li>
+                <li><a href="" target="_blank" rel="noreferrer noopener">Sass</a></li>
+            </ul>
+        </section>
+        <section id="github">
+            <h2>My GitHub</h2>
+            <p>All my assigments for this course is at <a href="https://github.com/sofiewallin/" target="_blank" rel="noreferrer noopener">my GitHub page</a>. If you want to clone this repository and set it up on your computer you can find all the instructions you need in <a href="https://github.com/sofiewallin/learning-sass"target="_blank" rel="noreferrer noopener">the GitHub repository</a>.</p>
+        </section>
+    </main>
+    <footer id="main-footer">
+        <p>&copy; Design and code by Sofie Wallin 2021.</p>
+    </footer>
 </body>
 </html>

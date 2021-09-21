@@ -23,14 +23,6 @@ module.exports = merge(common, {
                     collapseWhitespace: true,
                     removeComments: true
                 }
-            }),
-            new HtmlWebpackPlugin({
-                template: './src/example.html',
-                filename: 'example.html',
-                minify: {
-                    collapseWhitespace: true,
-                    removeComments: true
-                }
             })
         ]
     },
