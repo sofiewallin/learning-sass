@@ -38,7 +38,7 @@
 
                 li {
                     @include block;
-                    border: 0.1rem solid darken($blue, 10%);
+                    border-bottom: 0.1rem solid darken($blue, 10%);
                     margin: 0;
                     opacity: 1;
                     transition: opacity 0.8s ease-in;
