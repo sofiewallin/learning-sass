@@ -1,4 +1,3 @@
-import { testJS } from './js/test.js';
+import { responsiveMenu } from './js/responsiveMenu.js';
 import './sass/main.scss';
-testJS();
-console.log('Tjoho balooba! I fucking love this! Yes!')
+responsiveMenu();

@@ -1,0 +1,87 @@
+/*------------------------------------*\
+    NAVIGATION
+\*------------------------------------*/
+
+/* Main navigation */
+#main-header {
+    @include align-center;
+    margin-top: $spacing-20;
+
+    &.enhanced-menu {
+        text-align: left;
+
+        .logo {
+            float: left;
+        }
+
+        #main-navigation {
+            float: right;
+
+            #main-menu {
+                background-color: $blue;
+                height: 100vh;
+                left: 0;
+                max-width: $full-width;
+                position: absolute;
+                top: 0;
+                transition: max-width 0.4s ease-in;
+
+                &.closed {
+                    max-width: 0;
+                    overflow: hidden;
+                    visibility: hidden;
+
+                    li {
+                        opacity: 0;
+                    }
+                }
+
+                li {
+                    @include block;
+                    border: 0.1rem solid darken($blue, 10%);
+                    margin: 0;
+                    opacity: 1;
+                    transition: opacity 0.8s ease-in;
+                }
+                
+                a {
+                    @include block;
+                    color: $white;
+                    font-size: $font-size-22;
+                    padding: $spacing-20 $spacing-25;
+                    text-decoration: none;
+
+                    &:hover {
+                        background-color: darken($blue, 10%);
+                    }
+
+                    @include breakpoint(tablet) {
+                        font-size: $font-size-26;
+                        padding: $spacing-25 $spacing-40;
+                    }
+                }
+            }
+        }
+    }
+
+    .logo {
+        font-size: $font-size-24;
+        margin-bottom: $spacing-20;
+
+        a {
+            color: $dark-grey;
+            text-decoration: none;
+        }
+
+        @include breakpoint(tablet) {
+            font-size: $font-size-32;
+        }
+    }
+
+    #main-navigation li {
+        @include no-list-style;
+        @include inline-block;
+        margin-bottom: 0.5em;
+        margin-right: 1em;
+    }
+}
