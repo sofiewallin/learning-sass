@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/sofiewallin/learning-sass#readme",
   "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
     "css-minimizer-webpack-plugin": "^3.0.2",
     "html-loader": "^2.1.2",
